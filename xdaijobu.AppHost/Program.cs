@@ -14,11 +14,11 @@ var xdaijobuDb = builder.AddMySqlContainer("mysql")
 
 var cache = builder.AddRedis("cache");
 
-var apiService = builder.AddProject<Projects.xdaijobu_ApiService>("apiservice");
+var apiService = builder.AddProject<Projects.xdaijobu_ApiService>("apiservice")
+    .WithReference(xdaijobuDb);
 
 builder.AddProject<Projects.xdaijobu_Web>("webfrontend")
-    .WithReference(cache)
-    .WithReference(xdaijobuDb)
+    .WithReference(cache)    
     .WithReference(apiService);
     
 

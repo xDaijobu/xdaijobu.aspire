@@ -22,8 +22,8 @@ var summaries = new[]
 app.MapGet("/weatherforecast", async (MySqlConnection db) =>
 {
     const string sql = """
-                SELECT Id, Code, Name, Email
-                FROM User
+                SELECT id, code, name, email
+                FROM user
                 """;
 
     var users = (await db.QueryAsync<User>(sql)).ToList();
